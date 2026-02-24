@@ -1,0 +1,216 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  SITE_CONFIG,
+  ROLES,
+  EXPERTISE,
+  PROJECTS,
+  BIO
+} from "@/lib/constants";
+import { Music, Mic, Code, GraduationCap, ExternalLink, ArrowRight, Mail, MapPin } from "lucide-react";
+---
+
+<PageLayout>
+  <!-- Hero Section -->
+  <section class="gradient-hero min-h-screen flex items-center pt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="max-w-4xl">
+        <div class="flex flex-wrap gap-3 mb-8">
+          {ROLES.map((role) => {
+            const iconMap = { Music, Mic, Code, GraduationCap };
+            const Icon = iconMap[role.icon as keyof typeof iconMap];
+            return (
+              <Badge variant="outline" className="px-4 py-2 text-sm flex items-center gap-2">
+                <Icon className="h-4 w-4" />
+                {role.title}
+              </Badge>
+            );
+          })}
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+          <span class="text-foreground">Hi, I'm </span>
+          <span class="gradient-text">Nakul</span>
+        </h1>
+        <p class="text-xl text-muted-foreground mb-8 max-w-2xl">
+          {BIO.short} I create at the intersection of music, technology, and education,
+          helping artists and students find their creative voice.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Get in Touch
+            <ArrowRight className="h-5 w-5" />
+          </a>
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center gap-2 border border-input bg-background px-8 py-4 rounded-md font-semibold hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            View Projects
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Photo placeholder -->
+        <div class="relative">
+          <div class="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-32 h-32 rounded-full bg-card border-4 border-primary/30 mx-auto mb-4 flex items-center justify-center">
+                <span class="text-4xl font-bold gradient-text">NT</span>
+              </div>
+              <p class="text-sm text-muted-foreground">Professional Photo</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <Badge variant="secondary" className="mb-4">
+            About Me
+          </Badge>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+            Nakul Tiruviluamala
+          </h2>
+          <div class="space-y-4 text-muted-foreground text-lg leading-relaxed">
+            {BIO.full.split('\n\n').map((paragraph) => (
+              <p>{paragraph.trim()}</p>
+            ))}
+          </div>
+          <div class="flex items-center gap-4 mt-8">
+            <div class="flex items-center gap-2 text-muted-foreground">
+              <MapPin className="h-5 w-5 text-primary" />
+              <span>{SITE_CONFIG.location}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="accent" className="mb-4">
+          What I Do
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Areas of Expertise</h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          A unique blend of artistic creativity and technical proficiency
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {EXPERTISE.map((category) => (
+          <div class="space-y-6">
+            <h3 class="text-xl font-semibold text-primary">{category.category}</h3>
+            <div class="space-y-4">
+              {category.skills.map((skill) => (
+                <Card className="card-hover bg-background">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-base">{skill.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>{skill.description}</CardDescription>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge variant="outline" className="mb-4">
+          Portfolio
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Featured Projects</h2>
+        <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
+          A selection of projects I've created or contributed to
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {PROJECTS.map((project) => (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group"
+          >
+            <Card className="card-hover h-full">
+              <CardHeader>
+                <div class="flex items-center justify-between">
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
+                  <ExternalLink className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                </div>
+                <CardDescription className="mt-2">
+                  {project.description}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div class="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <Badge variant="secondary" className="text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <Badge variant="accent" className="mb-4">
+          Get in Touch
+        </Badge>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+          Let's Create Something Together
+        </h2>
+        <p class="text-muted-foreground text-lg mb-8">
+          Whether you're looking for collaboration on a music project, need audio engineering services,
+          or want to discuss educational opportunities, I'd love to hear from you.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <a
+            href={`mailto:${SITE_CONFIG.email}`}
+            class="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-md font-semibold hover:bg-primary/90 transition-colors w-full sm:w-auto"
+          >
+            <Mail className="h-5 w-5" />
+            Send an Email
+          </a>
+        </div>
+
+        <div class="p-6 rounded-xl bg-background border border-border">
+          <div class="flex items-center justify-center gap-3 text-muted-foreground">
+            <MapPin className="h-5 w-5 text-primary" />
+            <span>{SITE_CONFIG.location}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
