@@ -1,0 +1,27 @@
+services:
+  web:
+    build: .
+    container_name: nakultiruviluamala-web
+    restart: unless-stopped
+    labels:
+      # Main router — nakultiruviluamala.com
+      - "traefik.enable=true"
+      - "traefik.http.routers.nakultiruviluamala.rule=Host(`nakultiruviluamala.com`)"
+      - "traefik.http.routers.nakultiruviluamala.tls=true"
+      - "traefik.http.routers.nakultiruviluamala.tls.certresolver=letsencrypt"
+      - "traefik.http.services.nakultiruviluamala.loadbalancer.server.port=80"
+
+      # WWW redirect — www.nakultiruviluamala.com → nakultiruviluamala.com
+      - "traefik.http.routers.nakultiruviluamala-www.rule=Host(`www.nakultiruviluamala.com`)"
+      - "traefik.http.routers.nakultiruviluamala-www.tls=true"
+      - "traefik.http.routers.nakultiruviluamala-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.nakultiruviluamala-www.middlewares=nakultiruviluamala-www-redirect"
+      - "traefik.http.middlewares.nakultiruviluamala-www-redirect.redirectregex.regex=^https?://www\\.nakultiruviluamala\\.com(.*)"
+      - "traefik.http.middlewares.nakultiruviluamala-www-redirect.redirectregex.replacement=https://nakultiruviluamala.com$${1}"
+      - "traefik.http.middlewares.nakultiruviluamala-www-redirect.redirectregex.permanent=true"
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
