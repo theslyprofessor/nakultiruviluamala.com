@@ -59,7 +59,7 @@ export const PROJECTS = [
     url: "https://midimaze.com",
     tag: "EdTech Platform",
     gradient: "from-violet-500/20 to-purple-500/20",
-    thumbnail: "/thumbnails/midimaze.webp?v=2",
+    thumbnail: "/thumbnails/midimaze.webp?v=3",
   },
   {
     title: "Southwestern Recording",
@@ -67,7 +67,7 @@ export const PROJECTS = [
     url: "https://southwesternrecording.com",
     tag: "Education",
     gradient: "from-emerald-500/20 to-teal-500/20",
-    thumbnail: "/thumbnails/southwesternrecording.webp?v=2",
+    thumbnail: "/thumbnails/southwesternrecording.webp?v=3",
   },
   {
     title: "Musician's Empowerment Collective",
@@ -75,7 +75,7 @@ export const PROJECTS = [
     url: "https://mecinfo.org",
     tag: "Non-Profit",
     gradient: "from-sky-500/20 to-indigo-500/20",
-    thumbnail: "/thumbnails/mecinfo.webp?v=2",
+    thumbnail: "/thumbnails/mecinfo.webp?v=3",
   },
   {
     title: "MusicMind",
@@ -83,7 +83,7 @@ export const PROJECTS = [
     url: "https://musicmind.biz",
     tag: "Music Business",
     gradient: "from-cyan-500/20 to-blue-500/20",
-    thumbnail: "/thumbnails/musicmind.webp?v=2",
+    thumbnail: "/thumbnails/musicmind.webp?v=3",
   },
   {
     title: "Verse & Vow",
@@ -91,7 +91,7 @@ export const PROJECTS = [
     url: "https://verseandvow.com",
     tag: "Event Agency",
     gradient: "from-rose-500/20 to-pink-500/20",
-    thumbnail: "/thumbnails/verseandvow.webp?v=2",
+    thumbnail: "/thumbnails/verseandvow.webp?v=3",
   },
   {
     title: "Build Forward Tech",
@@ -99,7 +99,7 @@ export const PROJECTS = [
     url: "https://buildforwardtech.com",
     tag: "Tech Consulting",
     gradient: "from-slate-500/20 to-zinc-500/20",
-    thumbnail: "/thumbnails/buildforwardtech.webp?v=2",
+    thumbnail: "/thumbnails/buildforwardtech.webp?v=3",
   },
 ] as const;
 
