@@ -10,7 +10,8 @@ export const SITE_CONFIG = {
 export const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#expertise", label: "Expertise" },
-  { href: "#projects", label: "Projects" },
+  { href: "#music", label: "Music" },
+  { href: "#projects", label: "Web Projects" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -63,7 +64,7 @@ export const PROJECTS = [
   {
     title: "Southwestern Recording",
     description: "Official college program website for Southwestern College's Recording Arts & Technology department.",
-    url: "https://southwesternrecording.org",
+    url: "https://southwesternrecording.com",
     tag: "Education",
     gradient: "from-emerald-500/20 to-teal-500/20",
     thumbnail: "/thumbnails/southwesternrecording.webp",
@@ -99,6 +100,35 @@ export const PROJECTS = [
     tag: "Tech Consulting",
     gradient: "from-slate-500/20 to-zinc-500/20",
     thumbnail: "/thumbnails/buildforwardtech.webp",
+  },
+] as const;
+
+export const MUSIC_PROJECTS = [
+  {
+    title: "Forever",
+    description: "Original score for the Sundance Film Festival selection. Featured in the 2021 ASCAP Sundance Composer Spotlight.",
+    tag: "Film Score",
+    icon: "Film",
+    url: "https://www.ascap.com/news-events/Events/2021/Sundance/composers/Tiruviluamala_Nakul",
+  },
+  {
+    title: "NWEAMO",
+    description: "Performances and compositions for the New West Evolving Arts & Music Organism — an international festival celebrating experimental music and cross-cultural collaboration.",
+    tag: "Experimental",
+    icon: "Radio",
+    url: "https://nweamo.org/nakul-tiruviluamala/",
+  },
+  {
+    title: "Studio Production",
+    description: "Recording, mixing, and mastering across genres including classical, jazz, rock, electronica, hip-hop, ambient, and Indian music.",
+    tag: "Production",
+    icon: "Disc3",
+  },
+  {
+    title: "Live Performance",
+    description: "Multi-instrumentalist performing in ensembles and solo settings, blending traditional and electronic instrumentation.",
+    tag: "Performance",
+    icon: "Mic",
   },
 ] as const;
 
